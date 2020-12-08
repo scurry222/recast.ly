@@ -4,21 +4,35 @@ import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 
 export default class App extends React.Component {
-  constructor(props) { super(props); }
+  constructor(props) { 
+    super(props);
+    this.state = {
+      videos: exampleVideoData,
+      playing: exampleVideoData[0]
+    };
+    this.changeVideo = this.changeVideo.bind(this);
+  }
+
+  changeVideo(video) {
+    this.setState({
+      playing: video
+    });
+  }
+
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>Search</em><Search /></h5></div>
+            <Search />
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em></em><VideoPlayer video={exampleVideoData[0]} /></h5></div>
+            <VideoPlayer video={this.state.playing} />
           </div>
           <div className="col-md-5">
-            <div><h5><em></em><VideoList videos={exampleVideoData} /></h5></div>
+            <VideoList click={this.changeVideo} videos={this.state.videos} />
           </div>
         </div>
       </div>
