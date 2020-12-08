@@ -1,7 +1,7 @@
 import Search from './Search.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-import ExampleVideo from '../data/exampleVideoData.js';
+import exampleVideoData from '../data/exampleVideoData.js';
 
 export default class App extends React.Component {
   constructor(props) { super(props); }
@@ -10,15 +10,15 @@ export default class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em><Search /></h5></div>
+            <div><h5><em>Search</em><Search video={exampleVideoData}/></h5></div>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em>videoPlayer</em><VideoPlayer /></h5></div>
+            <div><h5><em></em><VideoPlayer /></h5></div>
           </div>
           <div className="col-md-5">
-            <div><h5><em>videoList</em><VideoList videos={[{ExampleVideo}]} /></h5></div>
+            <div><h5><em></em><VideoList videos={exampleVideoData} /></h5></div>
           </div>
         </div>
       </div>
